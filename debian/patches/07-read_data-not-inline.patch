@@ -1,0 +1,19 @@
+Title: Remove inline keyword for read_data and write_data
+Date: 2015-06-28
+Origin: https://chromium.googlesource.com/chromiumos%2Fthird_party%2Ftrousers/+/c9c7cd50640c2d8882a04f59f1bcb383a88b19e9
+Bug-Debian: http://bugs.debian.org/778149
+Index: trousers/src/include/tspps.h
+===================================================================
+--- trousers.orig/src/include/tspps.h
++++ trousers/src/include/tspps.h
+@@ -18,8 +18,8 @@
+ 
+ TSS_RESULT	   get_file(int *);
+ int		   put_file(int);
+-inline TSS_RESULT  read_data(int, void *, UINT32);
+-inline TSS_RESULT  write_data(int, void *, UINT32);
++TSS_RESULT	   read_data(int, void *, UINT32);
++TSS_RESULT	   write_data(int, void *, UINT32);
+ UINT32		   psfile_get_num_keys(int);
+ TSS_RESULT	   psfile_get_parent_uuid_by_uuid(int, TSS_UUID *, TSS_UUID *);
+ TSS_RESULT	   psfile_remove_key_by_uuid(int, TSS_UUID *);

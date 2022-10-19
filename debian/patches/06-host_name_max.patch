@@ -1,0 +1,32 @@
+Index: trousers/src/tspi/tsp_tcsi_param.c
+===================================================================
+--- trousers.orig/src/tspi/tsp_tcsi_param.c
++++ trousers/src/tspi/tsp_tcsi_param.c
+@@ -19,6 +19,7 @@
+ #define HOST_NAME_MAX 64
+ #endif
+ 
++#include <bits/posix1_lim.h>
+ #include "trousers/tss.h"
+ #include "trousers/trousers.h"
+ #include "trousers_types.h"
+@@ -92,7 +93,7 @@ get_tcsd_port(char port_str[TCP_PORT_STR
+ }
+ 
+ /**
+- *  Allocates a string with up to HOST_NAME_MAX chars which contains
++ *  Allocates a string with up to _POSIX_HOST_NAME_MAX chars which contains
+  *  the hostname extracted from the env var
+  */
+ int
+@@ -116,8 +117,8 @@ get_hostname_from_env(char **host_str, u
+ 
+ 	LogDebug("Environment var %s got value: %s", HOSTNAME_ENV_VAR, tmp_str);
+ 	env_len = strlen(tmp_str);
+-	if (env_len > HOST_NAME_MAX) {
+-		*len = HOST_NAME_MAX + 1;
++	if (env_len > _POSIX_HOST_NAME_MAX) {
++		*len = _POSIX_HOST_NAME_MAX + 1;
+ 	} else {
+ 		*len = env_len + 1;
+ 	}

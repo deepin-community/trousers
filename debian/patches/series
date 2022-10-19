@@ -1,0 +1,8 @@
+01-tss-user.patch
+02-manapge.patch
+03-readme.patch
+05-ftbfs-hurd.patch
+06-host_name_max.patch
+07-read_data-not-inline.patch
+08-fix-wrong-version-0.3.14.patch
+09-trousers-resolve-build-failure.patch

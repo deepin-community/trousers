@@ -1,0 +1,18 @@
+#!/usr/bin/make -f
+
+export DH_VERBOSE = 1
+
+%:
+	dh ${@} --with autoreconf
+
+override_dh_auto_configure:
+	dh_auto_configure -- --with-gui=none
+
+override_dh_auto_install:
+	dh_auto_install
+
+override_dh_install:
+	dh_install -X.la --fail-missing --sourcedir=debian/tmp
+
+override_dh_strip:
+	dh_strip --dbg-package=trousers-dbg
